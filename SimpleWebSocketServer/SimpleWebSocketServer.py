@@ -15,6 +15,7 @@ else:
 
 import hashlib
 import base64
+import logging
 import socket
 import struct
 import ssl
@@ -656,6 +657,8 @@ class SimpleWebSocketServer(object):
             try:
                client._handleData()
             except Exception as n:
+               logging.error("Exception in websocket:")
+               logging.error(n)
                self._handleClose(client)
                del self.connections[ready]
                self.listeners.remove(ready)
