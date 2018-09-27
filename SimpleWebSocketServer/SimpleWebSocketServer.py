@@ -640,6 +640,7 @@ class SimpleWebSocketServer(object):
 
       for ready in rList:
          if ready == self.serversocket:
+            sock = None
             try:
                sock, address = self.serversocket.accept()
                newsock = self._decorateSocket(sock)
